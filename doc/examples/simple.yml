@@ -36,7 +36,7 @@ route:
   repeat_interval: 3h 
 
   # A default receiver
-  receiver: team-X-mails
+  receiver: slack
 
   # All the above attributes are inherited by all child routes and can 
   # overwritten on each.
@@ -94,6 +94,12 @@ inhibit_rules:
 
 
 receivers:
+- name: 'slack'
+    slack_configs:
+    - api_url: 'https://hooks.slack.com/services/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'
+      channel: '#devops'
+      text: 'Instances: {{ range .Alerts }}{{ .Labels.instance }} {{ end }}'
+
 - name: 'team-X-mails'
   email_configs:
   - to: 'team-X+alerts@example.org'
