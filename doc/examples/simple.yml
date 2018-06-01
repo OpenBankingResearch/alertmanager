@@ -78,6 +78,13 @@ route:
     - match:
         owner: team-Y
       receiver: team-Y-pager
+      
+  # This route handles all alerts coming from the data related services
+  - match:
+      service: ^(database-stack|service-stack)$
+      severity: critical
+     continue: true
+     receiver: slack
 
 
 # Inhibition rules allow to mute a set of alerts given that another alert is
