@@ -8,6 +8,7 @@ global:
   hipchat_auth_token: '1234556789'
   # Alternative host for Hipchat.
   hipchat_api_url: 'https://hipchat.foobar.org/'
+  slack_api_url: 'https://hooks.slack.com/services/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'
 
 # The directory from which notification templates are read.
 templates: 
@@ -103,7 +104,6 @@ inhibit_rules:
 receivers:
 - name: 'slack'
     slack_configs:
-    - api_url: 'https://hooks.slack.com/services/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'
       channel: '#devops'
       text: 'Instances: {{ range .Alerts }}{{ .Labels.instance }} {{ end }}'
 
